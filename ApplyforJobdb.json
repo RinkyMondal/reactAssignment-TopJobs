@@ -1,0 +1,70 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "jamg44"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "fname": "Rinky",
+      "mname": "",
+      "lname": "Mondal",
+      "email": "rinkymondal.rinaa@gmail.com",
+      "phoneno": "9669681517",
+      "add1": "ranjhi",
+      "add2": "MP",
+      "exp": "3",
+      "rexp": "3",
+      "isError": {
+        "fname": "",
+        "email": "",
+        "phoneno": ""
+      },
+      "id": 2
+    },
+    {
+      "fname": "Rinky",
+      "mname": "",
+      "lname": "Mondal",
+      "email": "rinkymondal.rinaa@gmail.com",
+      "phoneno": "9669681517",
+      "add1": "",
+      "add2": "",
+      "exp": "2 years",
+      "rexp": "2",
+      "isError": {
+        "fname": "",
+        "email": "",
+        "phoneno": ""
+      },
+      "id": 3
+    },
+    {
+      "fname": "Rinky",
+      "mname": "",
+      "lname": "",
+      "email": "rinkymondal@gmail.com",
+      "phoneno": "9669681517",
+      "add1": "",
+      "add2": "",
+      "exp": "3",
+      "rexp": "3",
+      "isError": {
+        "fname": "",
+        "email": "",
+        "phoneno": ""
+      },
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "jamg44"
+  }
+}

@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "set PORT=3010 && react-scripts start",
+    "json-server": "json-server --watch ContactUsdb.json --port 3001",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

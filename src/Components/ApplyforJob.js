@@ -69,13 +69,12 @@ class ApplyforJob extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.formValid(this.state)) {
-            fetch("http://localhost:3000/posts", {
+            fetch("http://localhost:3000/comments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(this.state),
-                id: Math.random().toString(36).slice(2),
             })
                 .then(
                     this.setState({
@@ -90,7 +89,6 @@ class ApplyforJob extends React.Component {
                         rexp: "",
                     })
                 );
-            console.log(this.state);
         } else {
             console.log("Form is invalid!");
         }

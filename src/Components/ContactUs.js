@@ -18,10 +18,12 @@ class ContactUs extends React.Component {
     };
 
 
+    //handling button clicks
     handleChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
         let isError = { ...this.state.isError };
+        //checking validations
         switch (name) {
             case "fname":
                 isError.fname =
@@ -45,13 +47,12 @@ class ContactUs extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.formValid(this.state)) {
-            fetch("http://localhost:3000/posts", {
+            fetch("http://localhost:3001/posts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(this.state),
-                id: Math.random().toString(36).slice(2),
             })
                 .then(
                     this.setState({
@@ -67,6 +68,7 @@ class ContactUs extends React.Component {
 
     }
 
+    //checking for is valid or not
     formValid = ({ isError, ...rest }) => {
         let isValid = false;
         Object.values(isError).forEach(val => {

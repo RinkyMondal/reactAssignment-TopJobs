@@ -13,53 +13,28 @@
       "id": 2
     },
     {
-      "fname": "Rinky",
-      "email": "diptimondal.dips@gmail.com",
-      "phone": "23344444",
-      "message": "ji",
-      "id": 3
-    },
-    {
-      "fname": "Dipti",
-      "email": "dipti@gmail.com",
-      "phone": "9669817421",
-      "message": "I have a query",
+      "fname": "Rinky Mondal",
+      "email": "rinky1@gmail.com",
+      "phone": "0385783992",
+      "message": "Query",
       "isError": {
-        "name": "",
-        "email": "",
-        "password": "",
         "fname": "",
+        "email": "",
         "phone": ""
       },
-      "id": 4
+      "id": 7
     },
     {
       "fname": "rinky",
-      "email": "rinky@gmail.com",
-      "phoneno": "9669681517",
-      "isError": {
-        "fname": "",
-        "email": "",
-        "phoneno": ""
-      },
-      "id": 5
-    },
-    {
-      "fname": "Rinky",
-      "mname": "",
-      "lname": "Mondal",
       "email": "rinkymondal.rinaa@gmail.com",
-      "phoneno": "9669681518",
-      "add1": "ranjhi",
-      "add2": "MP,jabalpur",
-      "exp": "3",
-      "rexp": "3",
+      "phone": "9669817421",
+      "message": "Hi",
       "isError": {
         "fname": "",
         "email": "",
-        "phoneno": ""
+        "phone": ""
       },
-      "id": 6
+      "id": 8
     }
   ],
   "comments": [
