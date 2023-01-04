@@ -9,7 +9,7 @@ const CoverPage = () => {
         <div>
             <div className='ui fluid container'>
                 <Header />
-                <img src={Contact_us} class="ui fluid image" />
+                <img src={Contact_us} className="ui fluid image" />
             </div>
         </div>
     )

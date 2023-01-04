@@ -1,0 +1,12 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "name": "Rinky Mondal",
+            "email": "rinkymondal@gmail.com",
+            "phone": "9669681516",
+            "message": "I have a query"
+        }
+      
+    ]
+}

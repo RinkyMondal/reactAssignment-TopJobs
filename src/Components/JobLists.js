@@ -18,9 +18,7 @@ const JobLists = () => {
                                     <Card.Content onClick={() => navigate("/applyjob")}>
                                         <Card.Header>Sales Manager</Card.Header>
                                         <Card.Meta>SRG International</Card.Meta>
-                                        {/* <Card.Description>
-                                            Matthew is a pianist living in Nashville.
-                                        </Card.Description> */}
+
                                     </Card.Content>
                                     <Card.Content extra>
                                         <div className='ui three column grid'>
@@ -124,7 +122,7 @@ const JobLists = () => {
                             <div className='ui centered cards'>
                                 <div className='ui link card' style={{ width: '530px' }}>
                                     <Card.Content onClick={() => navigate("/applyjob")}>
-                                        <Card.Header>Account Officer - Banking</Card.Header>
+                                        <Card.Header>Sales Manager</Card.Header>
                                         <Card.Meta>KAYPEE FOOD PRODUCTS</Card.Meta>
                                     </Card.Content>
                                     <Card.Content extra>
@@ -132,11 +130,11 @@ const JobLists = () => {
                                             <div className='row'>
                                                 <div className='column'>
                                                     <Icon name='briefcase' />
-                                                    4-9 yrs
+                                                    5-9 yrs
                                                 </div>
                                                 <div className='column'>
                                                     <Icon name='rupee sign' />
-                                                    3,00,000-9,00,000 PA
+                                                    5,00,000-9,00,000 PA
                                                 </div>
                                                 <div className='column'>
                                                     <Icon name='map marker alternate' />
@@ -151,8 +149,8 @@ const JobLists = () => {
                             <div className='ui centered cards'>
                                 <div className='ui link card' style={{ width: '530px' }}>
                                     <Card.Content onClick={() => navigate("/applyjob")}>
-                                        <Card.Header>Account Officer - Banking</Card.Header>
-                                        <Card.Meta>KAYPEE FOOD PRODUCTS</Card.Meta>
+                                        <Card.Header>Assistant Manager - Banking</Card.Header>
+                                        <Card.Meta>ICICI Bank</Card.Meta>
                                     </Card.Content>
                                     <Card.Content extra>
                                         <div className='ui three column grid'>
@@ -163,7 +161,7 @@ const JobLists = () => {
                                                 </div>
                                                 <div className='column'>
                                                     <Icon name='rupee sign' />
-                                                    3,00,000-9,00,000 PA
+                                                    5,00,000-9,00,000 PA
                                                 </div>
                                                 <div className='column'>
                                                     <Icon name='map marker alternate' />
@@ -203,19 +201,19 @@ const JobLists = () => {
                             <div className='ui centered cards'>
                                 <div className='ui link card' style={{ width: '530px' }}>
                                     <Card.Content onClick={() => navigate("/applyjob")}>
-                                        <Card.Header>Account Officer - Banking</Card.Header>
-                                        <Card.Meta>KAYPEE FOOD PRODUCTS</Card.Meta>
+                                        <Card.Header>Officer</Card.Header>
+                                        <Card.Meta>FOOD PRODUCTS</Card.Meta>
                                     </Card.Content>
                                     <Card.Content extra>
                                         <div className='ui three column grid'>
                                             <div className='row'>
                                                 <div className='column'>
                                                     <Icon name='briefcase' />
-                                                    4-9 yrs
+                                                    5-10 yrs
                                                 </div>
                                                 <div className='column'>
                                                     <Icon name='rupee sign' />
-                                                    3,00,000-9,00,000 PA
+                                                    5,00,000-9,00,000 PA
                                                 </div>
                                                 <div className='column'>
                                                     <Icon name='map marker alternate' />

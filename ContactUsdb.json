@@ -1,0 +1,75 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "fname": "Rinky",
+      "email": "rinkymondal.rinaa@gmail.com",
+      "phone": "4567893456",
+      "message": "hi",
+      "id": 2
+    },
+    {
+      "fname": "Rinky",
+      "email": "diptimondal.dips@gmail.com",
+      "phone": "23344444",
+      "message": "ji",
+      "id": 3
+    },
+    {
+      "fname": "Dipti",
+      "email": "dipti@gmail.com",
+      "phone": "9669817421",
+      "message": "I have a query",
+      "isError": {
+        "name": "",
+        "email": "",
+        "password": "",
+        "fname": "",
+        "phone": ""
+      },
+      "id": 4
+    },
+    {
+      "fname": "rinky",
+      "email": "rinky@gmail.com",
+      "phoneno": "9669681517",
+      "isError": {
+        "fname": "",
+        "email": "",
+        "phoneno": ""
+      },
+      "id": 5
+    },
+    {
+      "fname": "Rinky",
+      "mname": "",
+      "lname": "Mondal",
+      "email": "rinkymondal.rinaa@gmail.com",
+      "phoneno": "9669681518",
+      "add1": "ranjhi",
+      "add2": "MP,jabalpur",
+      "exp": "3",
+      "rexp": "3",
+      "isError": {
+        "fname": "",
+        "email": "",
+        "phoneno": ""
+      },
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

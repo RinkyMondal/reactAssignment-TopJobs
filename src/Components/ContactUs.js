@@ -1,146 +1,167 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Input, TextArea, Grid, Image, Icon } from 'semantic-ui-react';
-import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import { omit } from 'lodash';
 
 import Header from '../Components/Header';
 import Contact_Us from '../Images/contact_us.png';
 
-const ContactUs = () => {
-    const navigate = useNavigate();
-    const handleSubmit = () => {
-        axios.post(`https://jsonplaceholder.typicode.com/users`).then(res => {
-            console.log(res);
-            alert("User Created Successfully");
-            navigate("/contactus");
-        })
-    }
+class ContactUs extends React.Component {
+    state = {
+        fname: "",
+        email: "",
+        phone: "",
+        message: "",
+        isError: {
+            fname: '',
+            email: '',
+            phone: ''
+        }
+    };
 
-    const handleChange = (event) => {
+
+    handleChange = (event) => {
         event.preventDefault();
-        let name = event.target.name;
-        let val = event.target.value;
-
-        validate(event, name, val);
-
-        setValues({
-            ...values,
-            [name]: val,
-        })
-    }
-
-    const [values, setValues] = useState({});
-    const [errors, setErrors] = useState({});
-
-    const validate = (event, name, value) => {
-
+        const { name, value } = event.target;
+        let isError = { ...this.state.isError };
         switch (name) {
-            case 'name':
-                if (!new RegExp(/^[A-Za-z][A-Za-z0-9_]{4}$/).test(value)) {
-                    setErrors({
-                        ...errors,
-                        name: 'Firstname should atleast have 5 letter & should not contain special characters'
-                    })
-                } else {
-                    let newObj = omit(errors, "name");
-                    setErrors(newObj);
-                }
+            case "fname":
+                isError.fname =
+                    value.length < 4 ? "Atleast 4 characaters required" : "";
                 break;
-
-            case 'email':
-                if (
-                    !new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(value)
-                ) {
-                    setErrors({
-                        ...errors,
-                        email: 'Enter a valid email address'
-                    })
-                } else {
-
-                    let newObj = omit(errors, "email");
-                    setErrors(newObj);
-
-                }
+            case "email":
+                isError.email = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(value)
+                    ? ""
+                    : "Email address is invalid";
                 break;
-
-            case 'phone':
-                if (
-                     !new RegExp(/^\+?[1-9][0-9]{7,14}$/)
-                ) {
-                    setErrors({
-                        ...errors,
-                        phone: 'Enter your 10-digit mobile number'
-                    })
-                } else {
-
-                    let newObj = omit(errors, "phone");
-                    setErrors(newObj);
-
-                }
+            case "phone":
+                isError.phone =
+                    value.length < 10 ? "Enter valid phone number" : "";
                 break;
-
             default:
                 break;
         }
+        this.setState({ isError, [name]: value });
     }
-    return (
-        <>
-            <Header />
-            <br />
-            <Grid divided='vertically'>
-                <Grid.Row columns={2} 
-                style={{ margin: '20px 100px 50px', borderStyle: 'groove', borderWidth: '2px', 
-                boxShadow: '10px 10px 7px -9px #c9bfbf' }}>
-                    <Grid.Column>
-                        <h2><b>GET IN TOUCH</b></h2><br />
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Field inline>
-                                <label>Name</label>
-                                <Input name='name' style={{ width: '22rem' }} onChange={handleChange} />
-                                {
-                                    errors.name && <p style={{color: 'red'}}>{errors.name}</p>
-                                }
-                            </Form.Field>
-                            <Form.Field inline>
-                                <label>Email</label>
-                                <Input name='email' style={{ width: '22rem' }} onChange={handleChange} />
-                                {
-                                    errors.email && <p style={{color: 'red'}}>{errors.email}</p>
-                                }
-                            </Form.Field>
-                            <Form.Field inline>
-                                <label>Phone</label>
-                                <Input name='phone' style={{ width: '22rem' }} onChange={handleChange} />
-                                {
-                                    errors.phone && <p style={{color: 'red'}}>{errors.phone}</p>
-                                }
-                            </Form.Field>
-                            <Form.Field inline >
-                                <label>Message</label>
-                                <TextArea style={{ width: '22rem' }} />
-                            </Form.Field>
-                            <button className="btn btn-primary" type="submit">Submit</button>
-                        </Form>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Image style={{paddingTop: '60px'}} src={Contact_Us} size='big' />
-                    </Grid.Column>
 
-                </Grid.Row>
+    handleSubmit = (e) => {
+        e.preventDefault();
+        if (this.formValid(this.state)) {
+            fetch("http://localhost:3000/posts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(this.state),
+                id: Math.random().toString(36).slice(2),
+            })
+                .then(
+                    this.setState({
+                        fname: "",
+                        email: "",
+                        phone: "",
+                        message: ""
+                    })
+                );
+        } else {
+            console.log("Form is invalid!");
+        }
 
-                <Grid.Row columns={2}>
-                    <Grid.Row>
+    }
+
+    formValid = ({ isError, ...rest }) => {
+        let isValid = false;
+        Object.values(isError).forEach(val => {
+            if (val.length > 0) {
+                isValid = false
+            } else {
+                isValid = true
+            }
+        });
+        Object.values(rest).forEach(val => {
+            if (val === null) {
+                isValid = false
+            } else {
+                isValid = true
+            }
+        });
+        return isValid;
+    };
+
+    render() {
+        const { isError } = this.state;
+        return (
+            <>
+                <Header />
+                <br />
+                <Grid divided='vertically'>
+                    <Grid.Row columns={2}
+                        style={{
+                            margin: '20px 100px 50px', borderStyle: 'groove', borderWidth: '2px',
+                            boxShadow: '10px 10px 7px -9px #c9bfbf'
+                        }}>
                         <Grid.Column>
-                            <Icon name='facebook square' style={{ fontSize: '3em', paddingLeft: '200px' }} />
-                            <Icon name='linkedin square' style={{ fontSize: '3em', paddingLeft: '60px' }} />
-                            <Icon name='twitter square' style={{ fontSize: '3em', paddingLeft: '60px' }} />
+                            <h2><b>GET IN TOUCH</b></h2><br />
+                            <Form onSubmit={this.handleSubmit}>
+                                <Form.Field inline>
+                                    <label>Name</label>
+                                    <Input name='fname'
+                                        value={this.state.fname}
+                                        style={{ width: '22rem' }}
+                                        onChange={this.handleChange}
+                                        required />
+                                    {
+                                        isError.fname && <p style={{ color: 'red' }}>{isError.fname}</p>
+                                    }
+                                </Form.Field>
+
+                                <Form.Field inline>
+                                    <label>Email</label>
+                                    <Input name='email'
+                                        value={this.state.email}
+                                        style={{ width: '22rem' }}
+                                        onChange={this.handleChange} required />
+                                    {
+                                        isError.email && <p style={{ color: 'red' }}>{isError.email}</p>
+                                    }
+
+                                </Form.Field>
+                                <Form.Field inline>
+                                    <label>Phone</label>
+                                    <Input name='phone'
+                                        value={this.state.phone}
+                                        style={{ width: '22rem' }}
+                                        onChange={this.handleChange} required />
+                                    {
+                                        isError.phone && <p style={{ color: 'red' }}>{isError.phone}</p>
+                                    }
+
+                                </Form.Field>
+                                <Form.Field inline >
+                                    <label>Message</label>
+                                    <TextArea name='message' value={this.state.message} style={{ width: '22rem' }} onChange={this.handleChange} />
+                                </Form.Field>
+                                <button className="btn btn-primary" type="submit">Submit</button>
+                            </Form>
                         </Grid.Column>
+                        <Grid.Column>
+                            <Image style={{ paddingTop: '60px' }} src={Contact_Us} size='big' />
+                        </Grid.Column>
+
                     </Grid.Row>
-                </Grid.Row>
-            </Grid>
-        </>
-    )
+
+                    <Grid.Row columns={2}>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Icon name='facebook square' style={{ fontSize: '3em', paddingLeft: '200px' }} />
+                                <Icon name='linkedin square' style={{ fontSize: '3em', paddingLeft: '60px' }} />
+                                <Icon name='twitter square' style={{ fontSize: '3em', paddingLeft: '60px' }} />
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid.Row>
+                </Grid>
+            </>
+        )
+    }
+
 }
 
 export default ContactUs;
