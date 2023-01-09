@@ -22,7 +22,7 @@ const Header = () => {
 
             <Menu.Menu position='right'>
                 <Menu.Item
-                    name='home'
+                    name='home' data-testid='home-menu-item'
                     active={activeItem === 'home'}
                     onClick={() => navigate("/home")}
                 />

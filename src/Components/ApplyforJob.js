@@ -105,13 +105,14 @@ class ApplyforJob extends React.Component {
                     <h4 style={{ paddingTop: '20px', fontFamily: 'fantasy' }}>Apply for Job</h4>
                     <div className='ui fluid card' style={{ padding: '4rem', marginTop: '10px' }}>
 
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form onSubmit={this.handleSubmit} data-testid='form'>
 
                             <div className='row'>
                                 <div className='column'>
 
                                     <Form.Group>
-                                        <Form.Input label='First name' name='fname' value={this.state.fname}
+                                        <Form.Input label='First name' data-testid='fname' 
+                                        name='fname' value={this.state.fname}
                                             placeholder='First Name'
                                             onChange={this.handleChange} width={6} required
                                         />
